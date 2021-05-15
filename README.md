@@ -31,6 +31,8 @@ The module is wrote as a class containing functions to perform requests. See som
         .catch((response) => console.error(response))
 </script>
 ```
+<br>
+If you want to try it yourself easily, download this repos, and run the ``index.html`` page to get an UI and try a GET request.
 <br><br>
 
 # Requests schema :
