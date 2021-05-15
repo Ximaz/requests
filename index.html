@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests - Quatrecentquatre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: none;
+            text-decoration: none;
+            color: #eee;
+            font-family: Arial, Helvetica, sans-serif;
+            scrollbar-width: 0;
+            scroll-behavior: smooth;
+        }
+
+        *::-webkit-scrollbar {
+            width: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(#111, black);
+            overflow: hidden;
+            font-size: 16px;
+        }
+
+        .container {
+            margin: 10%;
+            width: 100%;
+        }
+
+        a.link {
+            color: rgb(0, 180, 255);
+        }
+
+        a.link:hover {
+            color: rgb(0, 140, 255);
+        }
+
+        input[type="text"],
+        select,
+        textarea,
+        button {
+            padding: 5px 10px;
+            background-color: #101010;
+            border: 2px solid #252525;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        input:focus,
+        select,
+        textarea,
+        button {
+            border: 2px solid #505050;
+            outline: none;
+        }
+
+        input[type="text"] {
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            min-width: 100%;
+        }
+
+        #tests {
+            width: 60%;
+        }
+
+        .flex {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin: auto;
+            vertical-align: middle;
+            align-items: center;
+        }
+
+        #methods {
+            width: 25%;
+        }
+
+        .flex>input[type="text"] {
+            width: 72%;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        #response {
+            width: 40%;
+        }
+
+        #app {
+            width: 60%;
+        }
+
+        .warning {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flex">
+        <div class="container" id="app">
+
+            <div id="intro">
+                <h1>Welcome !</h1>
+                <br>
+                <p>This is a test page to let you try the 'Requests' module that you can find <a class="link"
+                        href="https://github.com/Quatrecentquatre-404/requests" target="_blank"
+                        rel="noopener noreferer">there</a>.</p>
+                <br>
+                <small><span class="warning">WARNING</span> : This might not work if the page is hosted localy due of <span class="warning">CORS Policy</span> blocking requests.</small>
+            </div>
+            <br><br>
+            <div id="tests">
+                <div class="flex">
+                    <input type="text" name="url" id="url" placeholder="Enter an URL to fetch" value="/">
+                    <select name="methods" id="methods">
+                        <option value="get">GET</option>
+                    </select>
+                </div>
+                <br><br>
+                <textarea name="headers" id="headers" rows="3"
+                    placeholder="Enter the headers as JSON format"></textarea>
+
+                <br><br>
+                <button onclick="do_request()">Start</button>
+            </div>
+        </div>
+        <div class="container flex" id="response" style="margin: auto 5%;">
+            <textarea style="resize: none;" name="data" id="data" cols="50" rows="20"
+                placeholder="Response will be displayed here." readonly></textarea>
+        </div>
+    </div>
+
+    <script src="./scripts/requests.js"></script>
+    <script>
+        function do_request() {
+            const requests = new Requests()
+            requests[document.getElementById("methods").value](document.getElementById("url").value, JSON.parse(document.getElementById("headers").value || '{}'), null).then((response) => {
+                document.getElementById("data").value = response.body
+            })
+        }
+    </script>
+</body>
+
+</html>
