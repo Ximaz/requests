@@ -15,10 +15,15 @@ class Requests {
             if (!headers) return {}
             const lines = headers.split(/\r\n/g),
                 parsedHeaders = {}
+
             for (let line of lines) {
                 const key = line.split(/:/g)[0]
-                if (!key) continue
-                parsedHeaders[key] = line.split(/:/g).slice(1).join(':').trim()
+                if (key)
+                    parsedHeaders[key] = line
+                        .split(/:/g)
+                        .slice(1)
+                        .join(':')
+                        .trim()
             }
             return parsedHeaders
         }
@@ -36,22 +41,21 @@ class Requests {
                 const r = new XMLHttpRequest()
                 r.open(method, url)
 
-                Object.keys(headers).forEach((key) =>
-                    r.setRequestHeader(key, headers[key])
-                )
+                for (let [key, value] of Object.entries(headers))
+                    r.setRequestHeader(key, value)
 
                 r.send(body)
 
                 r.onload = () => {
                     const data = {
-                        status: r.status,
-                        body: r.responseText,
+                        status: this.status,
+                        body: this.responseText,
                         headers: _parseResponseHeaders(
-                            r.getAllResponseHeaders()
+                            this.getAllResponseHeaders()
                         ),
-                        raw_request: r,
+                        raw_request: this,
                     }
-                    if (199 < r.status < 300) resolve(data)
+                    if (199 < this.status < 300) resolve(data)
                     else reject(data)
                 }
             })
@@ -60,48 +64,48 @@ class Requests {
         this.get = (url, headers) => {
             return new Promise((resolve, reject) => {
                 _default('GET', url, headers)
-                    .then((data) => resolve(data))
-                    .catch((data) => reject(data))
+                    .then((response) => resolve(response))
+                    .catch((error) => reject(error))
             })
         }
 
         this.delete = (url, headers) => {
             return new Promise((resolve, reject) => {
                 _default('DELETE', url, headers)
-                    .then((data) => resolve(data))
-                    .catch((data) => reject(data))
+                    .then((response) => resolve(response))
+                    .catch((error) => reject(error))
             })
         }
 
         this.post = (url, headers, body) => {
             return new Promise((resolve, reject) => {
                 _default('POST', url, headers, body)
-                    .then((data) => resolve(data))
-                    .catch((data) => reject(data))
+                    .then((response) => resolve(response))
+                    .catch((error) => reject(error))
             })
         }
 
         this.patch = (url, headers, body) => {
             return new Promise((resolve, reject) => {
                 _default('PATCH', url, headers, body)
-                    .then((data) => resolve(data))
-                    .catch((data) => reject(data))
+                    .then((response) => resolve(response))
+                    .catch((error) => reject(error))
             })
         }
 
         this.put = (url, headers, body) => {
             return new Promise((resolve, reject) => {
                 _default('PUT', url, headers, body)
-                    .then((data) => resolve(data))
-                    .catch((data) => reject(data))
+                    .then((response) => resolve(response))
+                    .catch((error) => reject(error))
             })
         }
 
         this.options = (url, headers, body) => {
             return new Promise((resolve, reject) => {
                 _default('OPTIONS', url, headers, body)
-                    .then((data) => resolve(data))
-                    .catch((data) => reject(data))
+                    .then((response) => resolve(response))
+                    .catch((error) => reject(error))
             })
         }
     }
