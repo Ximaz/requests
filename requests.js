@@ -4,7 +4,7 @@
  * @description This is a modular class to perfome requests easier. It's an interface between the developper and XHRs.
  */
 
-class Requests {
+ class Requests {
     constructor() {
         /**
          *
@@ -64,6 +64,14 @@ class Requests {
         this.get = (url, headers) => {
             return new Promise((resolve, reject) => {
                 _default('GET', url, headers)
+                    .then((response) => resolve(response))
+                    .catch((error) => reject(error))
+            })
+        }
+
+        this.head = (url, headers) => {
+            return new Promise((resolve, reject) => {
+                _default('HEAD', url, headers)
                     .then((response) => resolve(response))
                     .catch((error) => reject(error))
             })
