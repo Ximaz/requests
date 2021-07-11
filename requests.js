@@ -48,14 +48,14 @@
 
                 r.onload = () => {
                     const data = {
-                        status: this.status,
-                        body: this.responseText,
+                        status: r.status,
+                        body: r.responseText,
                         headers: _parseResponseHeaders(
-                            this.getAllResponseHeaders()
+                            r.getAllResponseHeaders()
                         ),
-                        raw_request: this,
+                        raw_request: r,
                     }
-                    if (199 < this.status < 300) resolve(data)
+                    if (199 < r.status < 300) resolve(data)
                     else reject(data)
                 }
             })
