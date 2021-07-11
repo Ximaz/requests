@@ -1,7 +1,7 @@
 /**
  * @author Quatrecentquatre
  * @name Requests
- * @description This is a modular class to perfome requests easier. It's an interface between the developper and XHRs.
+ * @description This is a modular class to perfom requests easier. It's an interface between the developer and XHRs.
  */
 
  class Requests {
