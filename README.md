@@ -1,49 +1,14 @@
-# Requests :
-Requests is a little JavaScript module to perform easily web requests using XMLHttpRequest's. If you ever had problems to use callback and Promises in function with XHR, that's the solution.
-<br><br>
-The module is wrote as a class containing functions to perform requests. See some basic examples below.
+# Requests
+Requests is an XHR wrapper written in JavaScript. It allows you to asynchronously make ``GET``, ``POST``, ``PATCH``, ``PUT``, ``DELETE``, ``HEAD`` and ``OPTIONS`` requests easier. You can see some usage example in ``tests.html``.
 
-# Sample usages :
-```html
-<!-- Simple GET request -->
-<script src="./scripts/requests.js"></script>
-<script>
-    const requests = new Requests()
-    requests
-        .get('/api/list', { Authorization: 'Bearer <TOKEN>' })
-        .then((response) => console.log(response))
-        .catch((response) => console.error(response))
-</script>
-```
-
-```html
-<!-- Simple POST request -->
-<script src="./scripts/requests.js"></script>
-<script>
-    const requests = new Requests()
-    requests
-        .post(
-            '/api/create',
-            { Authorization: 'Bearer <TOKEN>' },
-            { id: 'secret_id', description: 'some description' }
-        )
-        .then((response) => console.log(response))
-        .catch((response) => console.error(response))
-</script>
-```
-<br><br>
-
-# Requests schema :
-- GET, DELETE : url, headers?
-- POST, PATCH, PUT, OPTIONS : url, headers?, body?
-<br><br>
 
 # Return value :
-```json
+```ts
 {
-    "status": "<number>",
-    "body": "<string>",
-    "headers": "<object> (Response headers)",
-    "raw_request": "<XMLHttpRequest>"
+    status: Number, // The response status
+    body: String, // The response content
+    json: Object || null, // The response content as JSON if it can be parsed. Else, it's null
+    headers: Object, // The response headers
+    xhr: XMLHttpRequest // The created XMLHttpRequest
 }
 ```
