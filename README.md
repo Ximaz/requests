@@ -1,16 +1,6 @@
 # Requests
-Requests is a browser-side JS module which acts like an interface between XHRs and the developer. It helps to make asynchronous requests rather than using it's default callbacks.
+Requests is a browser-side TS module which acts like an interface between XHRs and the developer. It helps to make asynchronous requests rather than using it's default callbacks.
 
-# The Request type
-```ts
-declare interface Request {
-    status: Number
-    body: String
-    json: Object || null
-    headers: Object
-    xhr: XMLHttpRequest
-}
-```
 
 # Methods
 There are some usefull methods to handle "pure" requests, but also the JSON requests.
@@ -38,4 +28,4 @@ There are some usefull methods to handle "pure" requests, but also the JSON requ
 -   ``optionsJSON``.
 
 # Example
-You can see a usage example in the ``tests.html`` file.
+You can see a usage example in the ``app.ts`` file and an import example in ``index.html``.
