@@ -95,11 +95,7 @@ class Requests {
      * @returns {object} JSON response
      */
     static async getJSON(url, headers = {}) {
-        try {
-            return (await _default('GET', url, headers)).json
-        } catch (e) {
-            throw e
-        }
+        return (await this.get(url, headers)).json
     }
 
     /**
@@ -108,9 +104,33 @@ class Requests {
      * @param {object} headers Request headers
      * @returns {object} Response
      */
-    static async head(url, headers = {}) {
+     static async head(url, headers = {}) {
         try {
             return await _default('HEAD', url, headers)
+        } catch (e) {
+            throw e
+        }
+    }
+
+    /**
+     * HEAD JSON
+     * @param {string} url URL to fetch
+     * @param {object} headers Request headers
+     * @returns {object} Response
+     */
+     static async headJSON(url, headers = {}) {
+        return (await this.head(url, headers)).json
+    }
+
+    /**
+     * DELETE
+     * @param {string} url URL to fetch
+     * @param {object} headers Request headers
+     * @returns {object} Response
+     */
+     static async delete(url, headers = {}) {
+        try {
+            return await _default('DELETE', url, headers)
         } catch (e) {
             throw e
         }
@@ -122,12 +142,8 @@ class Requests {
      * @param {object} headers Request headers
      * @returns {object} Response
      */
-    static async delete(url, headers = {}) {
-        try {
-            return await _default('DELETE', url, headers)
-        } catch (e) {
-            throw e
-        }
+     static async deleteJSON(url, headers = {}) {
+        return (await this.delete(url, headers)).json
     }
 
     /**
