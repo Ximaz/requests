@@ -7,7 +7,7 @@
     "url": "git+https://github.com/Quatrecentquatre-404/requests.git"
   },
   "scripts": {
-    "start": "tsc app.ts --outFile dist/app.js --lib es2017,DOM --module AMD"
+    "start": "tsc -w -p ./tsconfig.json"
   },
   "keywords": [],
   "author": "",
