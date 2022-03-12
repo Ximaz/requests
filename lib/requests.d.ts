@@ -1,5 +1,5 @@
 /**
- * @author Quatrecentquatre-404
+ * @author Ximaz
  * @name Requests
  * @description Requests is a browser-side TS module which acts like an interface between XHRs and the developer. It helps to make asynchronous requests rather than using it's default callbacks.
  */

@@ -26,6 +26,3 @@ There are some usefull methods to handle "pure" requests, but also the JSON requ
 -   ``deleteJSON``,
 -   ``putJSON``,
 -   ``optionsJSON``.
-
-# Example
-You can see a usage example in the ``app.ts`` file and an import example in ``index.html``.

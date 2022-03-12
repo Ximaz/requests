@@ -6,7 +6,7 @@
   "typings": "lib/requests.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Quatrecentquatre-404/requests.git"
+    "url": "git+https://github.com/Ximaz/requests.git"
   },
   "scripts": {
     "start": "tsc -w -p ./tsconfig.json"
@@ -15,9 +15,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Quatrecentquatre-404/requests/issues"
+    "url": "https://github.com/Ximaz/requests/issues"
   },
-  "homepage": "https://github.com/Quatrecentquatre-404/requests#readme",
+  "homepage": "https://github.com/Ximaz/requests#readme",
   "devDependencies": {
     "typescript": "^4.4.4"
   },
